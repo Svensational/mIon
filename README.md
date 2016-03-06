@@ -1,2 +1,2 @@
 # mIon
-An exercise for my self. And maybe an engine for top down 3D games, who knows.
+An exercise for myself. And maybe someday an engine for top down 3D games, who knows.
