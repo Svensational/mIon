@@ -26,3 +26,10 @@
 *.exe
 *.out
 *.app
+
+# Codelite
+.clang
+.codelite
+.build
+Makefile
+*.mk
