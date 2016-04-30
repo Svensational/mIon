@@ -11,9 +11,11 @@ namespace mion
 class Engine_Win : public Engine
 {
 public:
-    explicit Engine_Win( HINSTANCE hInstance );
     virtual ~Engine_Win();
     virtual int run();
+    virtual void quit();
+
+    static void init( HINSTANCE p_hInstance );
 
 private:
     HINSTANCE m_hInstance;
@@ -21,7 +23,8 @@ private:
     bool registerWindowClass() const;
     bool unregisterWindowClass() const;
 
-    static LRESULT CALLBACK WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam );
+    explicit Engine_Win( HINSTANCE p_hInstance );
+    static LRESULT CALLBACK WndProc( HWND p_hWnd, UINT p_uiMessage, WPARAM p_wParam, LPARAM p_lParam );
 };
 
 } // namespace mion

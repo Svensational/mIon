@@ -49,7 +49,9 @@
       <File Name="platform/Window_Win.h"/>
       <File Name="platform/Engine_Win.cpp"/>
       <File Name="platform/Engine_Win.h"/>
+      <File Name="platform/Platform.h"/>
     </VirtualDirectory>
+    <File Name="mion.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="etc">
     <File Name="notes"/>
@@ -65,7 +67,7 @@
       <ResourceCompiler Options=""/>
     </GlobalSettings>
     <Configuration Name="Debug" CompilerType="MinGW ( TDM-GCC-64 )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
-      <Compiler Options="-pedantic-errors;-g;-O0;-fopenmp;-std=c++14;-std=c++11;-Wall" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+      <Compiler Options="-pedantic-errors;-g;-O0;-fopenmp;-std=c++14;-std=c++11;-Wall; -msse3" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
         <Preprocessor Value="MION_PLATFORM_WIN"/>
         <Preprocessor Value="UNICODE"/>

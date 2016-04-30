@@ -1,6 +1,8 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#define engine mion::Engine::getInstance()
+
 namespace mion
 {
 
@@ -13,7 +15,11 @@ public:
     virtual ~Engine();
     virtual int run() = 0;
 
+    static Engine * const getInstance();
+
 protected:
+    static Engine * s_pInstance;
+
     bool m_bRunning;
     Window * m_pWindow;
 

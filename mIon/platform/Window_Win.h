@@ -12,14 +12,14 @@ class Window_Win : public Window
 {
 
 public:
-    explicit Window_Win( HINSTANCE hInstance );
+    explicit Window_Win( HINSTANCE p_hInstance );
     virtual ~Window_Win();
-    LRESULT processMessage( UINT message, WPARAM wParam, LPARAM lParam );
+    LRESULT processMessage( UINT p_uiMessage, WPARAM p_wParam, LPARAM p_lParam );
 
 private:
     HWND m_hWindow;
 
-    bool create( HINSTANCE hInstance );
+    bool create( HINSTANCE p_hInstance );
     bool destroy();
 };
 

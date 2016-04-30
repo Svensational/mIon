@@ -4,6 +4,8 @@
 namespace mion
 {
 
+Engine * Engine::s_pInstance = nullptr;
+
 Engine::Engine() :
     m_bRunning( false ),
     m_pWindow( nullptr )
@@ -12,6 +14,11 @@ Engine::Engine() :
 
 Engine::~Engine()
 {
+}
+
+Engine * const Engine::getInstance()
+{
+    return s_pInstance;
 }
 
 void Engine::renderLoop()

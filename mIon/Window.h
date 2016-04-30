@@ -13,7 +13,6 @@ public:
     Window();
     virtual ~Window();
 
-protected:
     Event<math::Point2i, bool, bool> m_eventMouseMove;
     Event<math::Point2i, bool, bool> m_eventMouseButtonLeftDown;
     Event<math::Point2i, bool, bool> m_eventMouseButtonLeftUp;
@@ -25,10 +24,13 @@ protected:
     Event<math::Point2i, bool, bool> m_eventMouseButtonX1Up;
     Event<math::Point2i, bool, bool> m_eventMouseButtonX2Down;
     Event<math::Point2i, bool, bool> m_eventMouseButtonX2Up;
-    Event<float> m_eventMouseWheel;
-    Event<float> m_eventMouseWheelH;
+    Event<real> m_eventMouseWheel;
+    Event<real> m_eventMouseWheelH;
 
-    Event<unsigned int> m_eventCharInput;
+    Event<uint32> m_eventKeyDown;
+    Event<uint32> m_eventCharInput;
+
+    Event<> m_eventDestroyed;
 };
 
 } // namespace mion

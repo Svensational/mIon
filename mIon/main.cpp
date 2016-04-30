@@ -1,11 +1,8 @@
-#include "platform/Engine_Win.h"
+#include "mion.h"
 
-int WINAPI WinMain( HINSTANCE hInstance,
-                    HINSTANCE hPrevInstance,
-                    LPSTR lpCmdLine,
-                    int nCmdShow )
+MION_MAIN
 {
-    mion::Engine_Win engine( hInstance );
+    // do stuff!
 
-    return engine.run();
+    return engine->run();
 }

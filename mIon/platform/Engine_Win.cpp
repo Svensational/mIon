@@ -2,15 +2,18 @@
 #include <thread>
 #include "Window_Win.h"
 
+#include <iostream>
+
 namespace mion
 {
 
-Engine_Win::Engine_Win( HINSTANCE hInstance ) :
+Engine_Win::Engine_Win( HINSTANCE p_hInstance ) :
     Engine(),
-    m_hInstance( hInstance )
+    m_hInstance( p_hInstance )
 {
     registerWindowClass();
     m_pWindow = new Window_Win( m_hInstance );
+    m_pWindow->m_eventDestroyed.add( this, &Engine_Win::quit );
 }
 
 Engine_Win::~Engine_Win()
@@ -33,7 +36,7 @@ int Engine_Win::run()
         if ( bRet == -1 )
         {
             //Dafuq? I quit!
-            PostQuitMessage( 0 );
+            quit();
         }
         else
         {
@@ -48,6 +51,16 @@ int Engine_Win::run()
     threadLogicLoop.join();
 
     return 0;
+}
+
+void Engine_Win::quit()
+{
+    PostQuitMessage( 0 );
+}
+
+void Engine_Win::init( HINSTANCE p_hInstance )
+{
+    s_pInstance = new Engine_Win( p_hInstance );
 }
 
 bool Engine_Win::registerWindowClass() const
@@ -75,16 +88,16 @@ bool Engine_Win::unregisterWindowClass() const
     return UnregisterClassW( L"mIonEngine", m_hInstance );
 }
 
-LRESULT CALLBACK Engine_Win::WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
+LRESULT CALLBACK Engine_Win::WndProc( HWND p_hWnd, UINT p_uiMessage, WPARAM p_wParam, LPARAM p_lParam )
 {
-    Window_Win * pWindow = reinterpret_cast<Window_Win *>( GetWindowLongPtrW( hWnd, 0 ) );
+    Window_Win * const pWindow = reinterpret_cast<Window_Win *>( GetWindowLongPtrW( p_hWnd, 0 ) );
     if ( pWindow )
     {
-        return pWindow->processMessage( message, wParam, lParam );
+        return pWindow->processMessage( p_uiMessage, p_wParam, p_lParam );
     }
     else
     {
-        return DefWindowProcW( hWnd, message, wParam, lParam );
+        return DefWindowProcW( p_hWnd, p_uiMessage, p_wParam, p_lParam );
     }
 }
 

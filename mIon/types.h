@@ -24,6 +24,16 @@ using real = double;
 using real = float;
 #endif
 
+// SIMD
+typedef int32 v4int32 __attribute__( ( vector_size( sizeof( int32 ) * 4 ) ) );
+typedef real v4real __attribute__( ( vector_size( sizeof( real ) * 4 ) ) );
+
+
+#ifndef NDEBUG
+// operator << for simd vectors?
+#endif
+
+
 } // namespace mion
 
 #endif // TYPES_H
